@@ -14,6 +14,7 @@ export default function SendMessage() {
         setMessage(e.target.value);
     }
 
+
     const handleClick = () => {
         setMessage("");
         addMessage({id: id(), message: message, sentBy: "user", time: getCurrentTime24Hour()});
