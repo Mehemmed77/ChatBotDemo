@@ -88,7 +88,10 @@ html{
     gap: 10px;
 }
 
+.chat-footer > div {
+    width:100%;
+}
+
 .chat-footer input {
-    width: 100%;
     color: white;
 }

@@ -7,7 +7,7 @@ import Context from './Context';
 import getCurrentTime24Hour from './getCurrentTime24Hour';
 
 export default function SendMessage() {
-    const [message, setMessage] = useState();
+    const [message, setMessage] = useState("");
     const {addMessage} = useContext(Context);
 
     const handleChange = (e) => {
@@ -15,13 +15,15 @@ export default function SendMessage() {
     }
 
     const handleClick = () => {
+        setMessage("");
         addMessage({id: id(), message: message, sentBy: "user", time: getCurrentTime24Hour()});
     }
 
     return <>
         <div id="sendMessage">
         <div className="chat-footer">
-            <div><TextField onChange={handleChange} placeholder='Your Message'/></div>
+            <div><TextField value={message} onChange={handleChange} onKeyDown={(e) => {if (e.key === "Enter") handleClick();}}
+                placeholder='Your Message' sx={{width:"100%"}}/></div>
             <Button  variant='contained' startIcon={<SendIcon />} onClick={handleClick}> Send </Button>
         </div>
         </div>
